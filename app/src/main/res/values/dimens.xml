@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dim_20dp">20dp</dimen>
+    <dimen name="dim_10dp">10dp</dimen>
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="side_margin">16dp</dimen>
+</resources>

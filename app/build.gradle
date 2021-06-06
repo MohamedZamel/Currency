@@ -1,11 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
     compileSdkVersion 30
-
+    buildFeatures {
+        dataBinding = true
+    }
     defaultConfig {
         applicationId "com.mohamedzamel.currency"
         minSdkVersion 23
@@ -14,10 +20,20 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"http://data.fixer.io/\"")
+        buildConfigField("String", "Access_key",  "\"" + getFixerAccessKey() + "\"")
+
     }
 
     buildTypes {
+
+        debug {
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -29,16 +45,55 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
 
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$fragmentVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$fragmentVersion"
+
+
+    //region coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    //endregion
+
+
+    //region material design
+    implementation "com.google.android.material:material:$materialVersion"
+    //endregion
+
+    //region retrofit && okhttp
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    //endregion
+
+
+    //region SwipeRefresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefershLayoutVersion"
+    //endregion
+
+    //region Koin for DI Android
+    implementation "io.insert-koin:koin-android:$koin_version"
+    //endregion
+    //region NetworkResponseAdapter for Response handler
+    implementation "com.github.haroldadmin:NetworkResponseAdapter:$response_version"
+    //region Koin for DI Android
+}
+def getFixerAccessKey() {
+    return project.findProperty("fixer_access_key")
+}
+repositories {
+    mavenCentral()
 }

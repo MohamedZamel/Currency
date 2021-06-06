@@ -28,8 +28,8 @@ The app isn't usable without an API key
 Screenshots
 -----------
 
-![List of currencies](screenshots/allCurrenciesRates.png "Currencies Rates")
-![Currencies Rate](screenshots/currenciesRate.png "Currencies Converter from EUR to X currency")
+![List of currencies](screenShots/allCurrenciesRates.png "Currencies Rates")
+![Currencies Rate](screenShots/currenciesRate.png "Currencies Converter from EUR to X currency")
 
 Project Architecture
 --------------------

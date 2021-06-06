@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="rate"
+            type="com.mohamedzamel.currency.features.showAllCurrencies.data.entities.Rate" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
+
+        <TextView
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            tools:text="USD"
+            android:gravity="start"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintWidth_percent=".5"
+            app:layout_constraintWidth_default="percent"
+            android:padding="@dimen/dim_20dp"
+            android:text="@{rate.component1()}"
+            android:id="@+id/currencySymbolTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            tools:text="30.56"
+            app:HandyRateText="@{rate.component2()}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintWidth_percent=".5"
+            android:gravity="end"
+            app:layout_constraintWidth_default="percent"
+            android:padding="@dimen/dim_20dp"
+            android:id="@+id/currencyValueTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

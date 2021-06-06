@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/currenciesListFragment">
+
+    <fragment
+        android:id="@+id/currenciesListFragment"
+        android:name="com.mohamedzamel.currency.features.showAllCurrencies.ui.CurrenciesListFragment"
+        android:label="@string/currency_label">
+
+
+        <argument
+            android:name="rate"
+            app:argType="com.mohamedzamel.currency.features.showAllCurrencies.data.entities.Rate" />
+        <action
+            android:id="@+id/action_currenciesListFragment_to_convertRatesFragment"
+            app:destination="@id/convertRatesFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/convertRatesFragment"
+        android:name="com.mohamedzamel.currency.features.convertRates.ui.ConvertRateFragment"
+        android:label="@string/convert_rate_label">
+
+        <argument
+            android:name="rate"
+            app:argType="com.mohamedzamel.currency.features.showAllCurrencies.data.entities.Rate" />
+    </fragment>
+</navigation>

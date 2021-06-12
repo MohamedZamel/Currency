@@ -19,7 +19,7 @@ Once you have the key, add this line to the `gradle.properties` file, either in 
 directory (usually `~/.gradle/gradle.properties` on Linux and Mac) or in the project's root folder:
 
 ```
-Fixer_access_key=<your flickr access key> 
+Fixer_access_key=<your Fixer access key> 
 
 ```
 
